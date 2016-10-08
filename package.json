@@ -5,19 +5,20 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "npm run lint:js && npm run lint:js:test && node test/dist/js/test.js",
-    "postinstall": "npm run browserify && npm run browserify:test && npm run compile:scss && npm test",
-    "compile:scss": "node-sass style/scss/main.scss 'dist/css/app.css' --output",
-    "browserify": "browserify js/app.js -o dist/js/app.js -t [ babelify --presets [ es2015 ] ]",
-    "browserify:test": "browserify test/js/test.js -o test/dist/js/test.js -t [ babelify --presets [ es2015 ] ]",
+    "test": "npm run lint:js && npm run lint:js:test && node test/resources/js/test.js",
+    "postinstall": "npm run browserify && npm run compile:scss",
+    "compile:scss": "node-sass style/scss/main.scss 'resources/css/app.css' --output",
+    "browserify": "browserify js/app.js -o resources/js/app.js -t [ babelify --presets [ es2015 ] ]",
+    "browserify:test": "browserify test/js/test.js -o test/resources/js/test.js -t [ babelify --presets [ es2015 ] ]",
     "watch:scss": "watch-run -p 'style/scss/**/*.scss' 'npm run compile:scss'",
     "watch:js": "watch-run -p 'js/**/*.js' npm run browserify",
     "watch:js:test": "watch-run -p 'test/js/**/*.js' npm run browserify:test",
     "watch:all": "npm run watch:scss & npm run watch:js & npm run watch:js:test",
-    "analyse:css": "parker dist/css/app.css",
+    "analyse:css": "parker resources/css/app.css",
     "lint:js": "eslint js/**/*.js",
     "lint:js:test": "eslint test/js/**/*.js",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "dist": "build --dir"
   },
   "author": "Christian Heyn",
   "license": "MIT",
@@ -46,6 +47,7 @@
     "commitizen": "^2.8.2",
     "cz-conventional-changelog": "^1.1.6",
     "electron": "^1.4.3",
+    "electron-builder": "^7.11.4",
     "eslint": "^3.5.0",
     "node-sass": "^3.4.2",
     "parker": "0.0.10",
@@ -57,5 +59,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "build": {
+    "appId": "remmyApp",
+    "category": "calculator"
   }
 }
