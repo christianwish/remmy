@@ -1,0 +1,19 @@
+@mixin transition($task, $duration: 150ms, $wait: 0ms, $ease: ease-out) {
+    -webkit-transition-property: $task;
+    -webkit-transition-duration: $duration;
+    -webkit-transition-timing-function: $ease;
+    -webkit-transition-delay: $wait;
+
+    -moz-transition-property:  $task;
+    -moz-transition-duration: $duration;
+    -moz-transition-timing-function: $ease;
+    -moz-transition-delay: $wait;
+
+    transition-property:  $task;
+    transition-duration: $duration;
+    transition-timing-function: $ease;
+    transition-delay: $wait;
+
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+}

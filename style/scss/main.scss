@@ -1,0 +1,78 @@
+@import 'node_modules/normalize.scss/normalize';
+@import 'components/mixins';
+
+/*
+ * Monokai colors ==========
+ */
+$color-bg: #34352E;
+$color-bg-light: #7A7A6A;
+$color-red: #D14572;
+$color-yello: #DEDF9B;
+$color-green: #A8D63A;
+$color-blue: #72D1D1;
+/*
+ * =========================
+ */
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+	background-color: $color-bg;
+	font-family: 'Cutive Mono', monospace;
+}
+
+#footer {
+	height: 30px;
+	width: 100%;
+	background-color: $color-bg-light;
+	-webkit-app-region: drag;
+}
+
+.wrapper {
+	position: relative;
+	width: 100%;
+	padding: 0px;
+
+	input[type="text"] {
+		padding: 10px 15px;
+		font-size: 18px;
+		border: none;
+		display: block;
+		margin: 0;
+		float: left;
+		height: 60px;
+		color: $color-red;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+#px {
+	width: 70%;
+	background-color: $color-bg;
+}
+
+#unit {
+	width: 30%;
+	text-align: center;
+	color: $color-bg-light;
+	background-color: lighten($color-bg, 5%);
+}
+
+#rem {
+	color: #fff;
+	width: 100%;
+	background-color: $color-bg-light;
+	border-bottom: solid 10px $color-blue;
+}

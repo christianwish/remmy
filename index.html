@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Article">
+	<head>
+		<title>remmy</title>
+		<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
+		<link href="dist/css/app.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="wrapper">
+            <input type="text" id="px" name="px" placeholder="px">
+            <input type="text" id="unit" name="unit" value="16">
+            <input type="text" id="rem" name="rem" placeholder="rem">
+        </div>
+		<footer id="footer"></footer>
+
+		<script src="dist/js/app.js"></script>
+		<script type="text/javascript">
+			const {ipcRenderer} = require('electron');
+			window.addEventListener('keyup', function() {
+				ipcRenderer.send('getRemToClipboardRespond', window.getRem(true));
+			})
+		</script>
+	</body>
+</html>

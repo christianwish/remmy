@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "globals": {
+    "window": true,
+    "document": true
+  },
+  "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+  },
+  "rules": {
+    "indent": [2, 4],
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "comments": 100,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "tabWidth": 4
+      }
+    ]
+  }
+}
