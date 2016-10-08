@@ -2,14 +2,16 @@
 <html itemscope itemtype="http://schema.org/Article">
 	<head>
 		<title>remmy</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
 		<link href="resources/css/app.css" rel="stylesheet"/>
 	</head>
 	<body>
 		<div class="wrapper">
-            <input type="text" id="px" name="px" placeholder="px">
-            <input type="text" id="unit" name="unit" value="16">
-            <input type="text" id="rem" name="rem" placeholder="rem">
+            <textarea id="px" name="px" placeholder="px"></textarea>
+            <span class="corner"></span>
+            <input type="text" id="unit" maxlength="3" name="unit" value="16">
+            <textarea id="rem" name="rem" placeholder="rem"></textarea>
         </div>
 		<footer id="footer"></footer>
 

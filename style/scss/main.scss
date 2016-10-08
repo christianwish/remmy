@@ -7,7 +7,7 @@
 $color-bg: #34352E;
 $color-bg-light: #7A7A6A;
 $color-red: #D14572;
-$color-yello: #DEDF9B;
+$color-yellow: #DEDF9B;
 $color-green: #A8D63A;
 $color-blue: #72D1D1;
 /*
@@ -28,6 +28,7 @@ html {
 body {
 	background-color: $color-bg;
 	font-family: 'Cutive Mono', monospace;
+	overflow: hidden;
 }
 
 #footer {
@@ -42,15 +43,24 @@ body {
 	width: 100%;
 	padding: 0px;
 
-	input[type="text"] {
+	input[type="text"],
+	textarea {
 		padding: 10px 15px;
 		font-size: 18px;
 		border: none;
 		display: block;
 		margin: 0;
 		float: left;
-		height: 60px;
-		color: $color-red;
+		height: 70px;
+		color: $color-blue;
+		z-index: 0;
+		line-height: 19px;
+		resize: none;
+
+		&::selection {
+			color: #fff;
+			background: $color-red;
+		}
 
 		&:focus {
 			outline: none;
@@ -59,20 +69,50 @@ body {
 }
 
 #px {
-	width: 70%;
+	width: 65%;
 	background-color: $color-bg;
 }
 
 #unit {
-	width: 30%;
+	width: 35%;
 	text-align: center;
-	color: $color-bg-light;
+	color: $color-yellow;
 	background-color: lighten($color-bg, 5%);
+	padding-left: 20px;
 }
 
 #rem {
 	color: #fff;
 	width: 100%;
+	height: 70px;
 	background-color: $color-bg-light;
 	border-bottom: solid 10px $color-blue;
+	
+
+	&::selection {
+		color: fff;
+	}
+}
+
+.corner {
+	position: relative;
+	display: block;
+	float: left;
+	width: 0;
+	height: 70px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 0;
+		border: solid 35px transparent;
+		border-left-color: $color-bg;
+		border-top-color: $color-bg;
+		border-left-width: 10px;
+		border-right-width: 10px;
+		z-index: 2;
+	}
 }
