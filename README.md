@@ -1,7 +1,14 @@
 # remmy
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+## Px 2 rem calculator
 
-**Px to rem calculator**
+![alt tag](img/hello_remmy_app.gif)
+
+*Download BETA for mac:*
+[remmy-beta-mac.zip](http://christianheyn.com/remmy-app/remmy-beta-mac.zip)
+
+___
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Install
 ```sh
