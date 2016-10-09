@@ -1,83 +1,60 @@
 export default function () {
-    let dom = {
-    		px: document.getElementById('px'),
-    		unit: document.getElementById('unit'),
-    		rem: document.getElementById('rem')
-    	},
-    	parseToNumber = (string) => {
-    		let toNumber = parseInt(string);
+    let clearValueArray = (value) => {
+            let valueArray = value.split(/\s/);
+                valueArray = valueArray.map((i) => {
+                    let result = i.replace(/[a-z|A-Z]/g, '');
 
-    		if (!isNaN(toNumber)) {
-    			return toNumber;
-    		}
+                    return parseFloat(result);
+                });
+            return valueArray;
+        };
 
-    		return false;
-    	},
-    	unitNumber = 16,
-    	getRem = () => {
-    		let pxInput = parseToNumber(dom.px.value),
-    			result;
+    this.getRemValueFromPx = function (value, basic) {
+        let clearValues = clearValueArray(value, 'int'),
+            result = clearValues.map((i) => {
+                if (typeof i === 'number') {
+                    if (i === 0) {
+                        return '0';
+                    }
 
-    		if (pxInput) {
-    			result = ((pxInput / unitNumber) + "").split(/\./);
+                    if (isNaN(i)) {
+                        return '';
+                    }
 
-    			if (result[1]) {
-    				result = result[0] + '.' + result[1].substring(0, 6) + "rem";
-    			} else {
-    				result = result[0] + "rem";
-    			}
+                    return (i / basic) + 'rem';
+                }
 
-    			return result;
-    		}
+                return '';
+            });
 
-    		return false;
-    	},
-    	setRem = () => {
-    		let rem = getRem();
+        return result.join(' ').replace(/\s\s/, '').trim();
+    };
 
-    		if (rem) {
-    			dom.rem.value = rem;
-    		}
-    	},
-    	setPx = () => {
-    		let remInput = parseToNumber(dom.rem.value),
-    			result;
-    		
-    		if (remInput) {
-    			result = (remInput * unitNumber) + "px";
-    			dom.px.value = result;
-    			return result;
-    		}
+    this.getPxValueFromRem = function (value, basic) {
+        let clearValues = clearValueArray(value, 'float'),
+            result = clearValues.map((i) => {
+                var px;
+                if (typeof i === 'number') {
+                    if (i === 0) {
+                        return '0';
+                    }
 
-    		return false;
-    	},
-    	changeUnit = () => {
-    		let unitInput = parseToNumber(dom.unit.value);
+                    if (isNaN(i)) {
+                        return '';
+                    }
 
-    		if (unitInput) {
-    			unitNumber = unitInput;
-    			setRem();
-    		}
-    	};
+                    px = Math.round(i * basic);
 
-    window.getRem = getRem;
+                    if (px === 0) {
+                        return px;
+                    }
 
-    dom.px.addEventListener('focus', function () {
-    	dom.px.select();
-    });
+                    return px + 'px';
+                }
 
-    dom.rem.addEventListener('focus', function () {
-    	dom.rem.select();
-    });
+                return '';
+            });
 
-    window.addEventListener('focus', function () {
-    	dom.px.focus();
-    	dom.px.select();
-    });
-
-    dom.px.focus();
-
-    dom.px.addEventListener("keyup", setRem);
-    dom.rem.addEventListener("keyup", setPx);
-    dom.unit.addEventListener("keyup", changeUnit);
+        return result.join(' ').replace(/\s\s/, '').trim();
+    };
 }

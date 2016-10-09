@@ -1,3 +1,3 @@
-import remMath from './components/rem-math';
+import init from './components/init';
 
-remMath();
+init();
