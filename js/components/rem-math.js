@@ -7,6 +7,16 @@ export default function () {
                     return parseFloat(result);
                 });
             return valueArray;
+        },
+        maxLengthString = (number) => {
+            let stringArray = (number + '').split(/\./),
+                string = stringArray[0];
+
+            if (stringArray[1]) {
+                string += '.' + stringArray[1].substr(0, 5);
+            }
+
+            return string;
         };
 
     this.getRemValueFromPx = function (value, basic) {
@@ -21,7 +31,7 @@ export default function () {
                         return '';
                     }
 
-                    return (i / basic) + 'rem';
+                    return maxLengthString(i / basic) + 'rem';
                 }
 
                 return '';
@@ -33,7 +43,7 @@ export default function () {
     this.getPxValueFromRem = function (value, basic) {
         let clearValues = clearValueArray(value, 'float'),
             result = clearValues.map((i) => {
-                var px;
+                let px;
                 if (typeof i === 'number') {
                     if (i === 0) {
                         return '0';
