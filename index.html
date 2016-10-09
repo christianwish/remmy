@@ -21,6 +21,13 @@
 			window.addEventListener('keyup', function() {
 				ipcRenderer.send('getRemToClipboardRespond', window.getRem(true));
 			})
+
+			ipcRenderer.on('clipboardSuccess', function () {
+				document.body.setAttribute('class', 'copyed');
+				window.setTimeout(function () {
+					document.body.setAttribute('class', '');
+				}, 100);
+			});
 		</script>
 	</body>
 </html>

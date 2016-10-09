@@ -16,7 +16,7 @@ let mainWindow,
             width: 280,
             maxWidth: 280,
             minWidth: 280,
-            height: 160,
+            height: 180,
             maxHeight: 160,
             minHeight: 160,
             alwaysOnTop: false,
@@ -27,6 +27,8 @@ let mainWindow,
 
         electronLocalshortcut.register(mainWindow, 'CommandOrControl+C', (event) => {
             clipboard.writeText(rem4Clipboard);
+            // sending to render process
+            mainWindow.webContents.send('clipboardSuccess', true);
         });
 
         ipcMain.on('getRemToClipboardRespond', (event, arg) => {
