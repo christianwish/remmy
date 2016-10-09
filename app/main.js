@@ -4,10 +4,10 @@ const {
         globalShortcut,
         dialog,
         ipcMain,
+        Menu,
         clipboard
     } = require('electron');
 const BrowserWindow = electron.BrowserWindow;
-const electronLocalshortcut = require('electron-localshortcut');
 
 let mainWindow,
     rem4Clipboard = "0",
@@ -25,15 +25,6 @@ let mainWindow,
             maximizable: false
         });
 
-        electronLocalshortcut.register(mainWindow, 'CommandOrControl+C', (event) => {
-            
-            if (mainWindow && mainWindow.webContents) {
-                clipboard.writeText(rem4Clipboard);
-                // sending to render process
-                mainWindow.webContents.send('clipboardSuccess', true);
-            }
-        });
-
         ipcMain.on('getRemToClipboardRespond', (event, arg) => {
             rem4Clipboard = arg;
         });
@@ -44,7 +35,10 @@ let mainWindow,
         mainWindow.on('closed', function () {
             mainWindow = null
         });
-    };
+
+        const menu = Menu.buildFromTemplate(template)
+            Menu.setApplicationMenu(menu);
+        };
 
 app.on('ready', createWindow);
 
@@ -59,5 +53,45 @@ app.on('activate', function () {
         createWindow();
     }
 });
+
+const template = [
+  {
+    label: 'Edit',
+    submenu: [
+        {
+            role: 'undo'
+        },
+        {
+            role: 'redo'
+        },
+        {
+            type: 'separator'
+        },
+        {
+            label: 'copy',
+            accelerator: 'CmdOrCtrl+C',
+            click () {
+                if (mainWindow && mainWindow.webContents) {
+                    clipboard.writeText(rem4Clipboard);
+                    // sending to render process
+                    mainWindow.webContents.send('clipboardSuccess', true);
+                }
+            }
+        },
+        {
+            role: 'paste'
+        },
+        {
+            role: 'pasteandmatchstyle'
+        },
+        {
+            role: 'delete'
+        },
+        {
+            role: 'selectall'
+        }
+    ]
+  }
+];
 
 
