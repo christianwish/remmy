@@ -120,7 +120,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-resources/css/app.css
-resources/js/app.js
+app/resources/css/app.css
+app/resources/js/app.js
 test/dist/js/test.js
 dist/*

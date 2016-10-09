@@ -1,0 +1,22 @@
+{
+  "name": "remmy",
+  "version": "0.0.1",
+  "description": "px to rem calculator",
+  "author": "Christian Heyn",
+  "license": "MIT",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christianheyn/remmy.git"
+  },
+  "bugs": "https://github.com/christianheyn/remmy/issues",
+  "dependencies": {
+    "electron-localshortcut": "^0.6.1"
+  },
+  "keywords": [
+    "pixel",
+    "rem",
+    "calculator",
+    "helper"
+  ]
+}
