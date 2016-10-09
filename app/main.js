@@ -26,9 +26,12 @@ let mainWindow,
         });
 
         electronLocalshortcut.register(mainWindow, 'CommandOrControl+C', (event) => {
-            clipboard.writeText(rem4Clipboard);
-            // sending to render process
-            mainWindow.webContents.send('clipboardSuccess', true);
+            
+            if (mainWindow && mainWindow.webContents) {
+                clipboard.writeText(rem4Clipboard);
+                // sending to render process
+                mainWindow.webContents.send('clipboardSuccess', true);
+            }
         });
 
         ipcMain.on('getRemToClipboardRespond', (event, arg) => {
