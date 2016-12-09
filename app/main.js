@@ -68,7 +68,7 @@ const template = [
             type: 'separator'
         },
         {
-            label: 'copy',
+            label: 'Copy',
             accelerator: 'CmdOrCtrl+C',
             click () {
                 if (mainWindow && mainWindow.webContents) {
@@ -89,6 +89,24 @@ const template = [
         },
         {
             role: 'selectall'
+        },
+        {
+            type: 'separator'
+        },
+        {
+            role: 'hide'
+        },
+        {
+            role: 'hideothers'
+        },
+        {
+            role: 'unhide'
+        },
+        {
+            type: 'separator'
+        },
+        {
+            role: 'quit'
         }
     ]
   }
