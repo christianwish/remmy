@@ -35,7 +35,7 @@ export default function () {
             dom.unit.value = result;
             changeUnit();
         };
-
+	window.currentUnit = 'rem';
     window.getRem = getRem;
 
     dom.px.addEventListener('focus', function () {

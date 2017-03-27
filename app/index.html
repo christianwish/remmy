@@ -18,13 +18,10 @@
             </div>
         </div>
 
-        <div class="wrapper">
-        	
-        </div>
-
 		<script src="resources/js/app.js"></script>
 		<script type="text/javascript">
 			const {ipcRenderer} = require('electron');
+
 			window.addEventListener('keyup', function() {
 				ipcRenderer.send('getRemToClipboardRespond', window.getRem(true));
 			})
@@ -33,7 +30,19 @@
 				document.body.setAttribute('class', 'copyed');
 				window.setTimeout(function () {
 					document.body.setAttribute('class', '');
-				}, 100);
+				}, 250);
+			});
+
+			ipcRenderer.on('switchUnit', function () {
+				if (window.currentUnit && window.currentUnit === 'rem') {
+					window.currentUnit = 'em';
+					document.getElementById('rem').setAttribute('placeholder', 'em');
+				} else {
+					window.currentUnit = 'rem';
+					document.getElementById('rem').setAttribute('placeholder', 'rem');
+				}
+
+				window.getRem(true);
 			});
 		</script>
 	</body>

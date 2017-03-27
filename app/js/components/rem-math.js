@@ -1,3 +1,7 @@
+let unit = () => {
+    return window.currentUnit;
+};
+
 export default function () {
     let clearValueArray = (value) => {
             let valueArray = value.split(/\s/);
@@ -31,7 +35,7 @@ export default function () {
                         return '';
                     }
 
-                    return maxLengthString(i / basic) + 'rem';
+                    return maxLengthString(i / basic) + unit();
                 }
 
                 return '';

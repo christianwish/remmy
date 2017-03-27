@@ -78,6 +78,16 @@ const template = [
                 }
             }
         },
+		{
+            label: 'Switch unit',
+            accelerator: 'CmdOrCtrl+U',
+            click () {
+                if (mainWindow && mainWindow.webContents) {
+                    // sending to render process
+                    mainWindow.webContents.send('switchUnit', true);
+                }
+            }
+        },
         {
             role: 'paste'
         },
@@ -111,5 +121,3 @@ const template = [
     ]
   }
 ];
-
-
