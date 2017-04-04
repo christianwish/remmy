@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/Article">
 	<head>
-		<title>remmy</title>
+		<title>🍭</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
 		<link href="resources/css/app.css" rel="stylesheet"/>
@@ -21,6 +21,7 @@
 		<script src="resources/js/app.js"></script>
 		<script type="text/javascript">
 			const {ipcRenderer} = require('electron');
+			const remInput = document.getElementById('rem');
 
 			window.addEventListener('keyup', function() {
 				ipcRenderer.send('getRemToClipboardRespond', window.getRem(true));
@@ -36,10 +37,13 @@
 			ipcRenderer.on('switchUnit', function () {
 				if (window.currentUnit && window.currentUnit === 'rem') {
 					window.currentUnit = 'em';
-					document.getElementById('rem').setAttribute('placeholder', 'em');
+					remInput.setAttribute('placeholder', 'em');
+				} else if (window.currentUnit && window.currentUnit === 'em') {
+					window.currentUnit = '';
+					remInput.setAttribute('placeholder', '');
 				} else {
 					window.currentUnit = 'rem';
-					document.getElementById('rem').setAttribute('placeholder', 'rem');
+					remInput.setAttribute('placeholder', 'rem');
 				}
 
 				window.getRem(true);
