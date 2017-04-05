@@ -10,7 +10,7 @@ ___
 
 **Cmd+C** - copy current result to clipboard
 
-**Cmd+U** - Switch from *rem* to *em* ot *[no unit]*.
+**Cmd+U** - Switch from *rem* to *em* to *[no unit]*.
 
 
 ___
